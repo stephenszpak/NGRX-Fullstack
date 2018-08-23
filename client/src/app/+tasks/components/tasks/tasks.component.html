@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Tasks</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let task of tasks" fxLayout="row">
+        <div fxFlex class="task">
+          <a [routerLink]="['/tasks', task._id]">{{ task.name }}</a>
+        </div>
+        <div class="actions">
+          <button mat-icon-button [matMenuTriggerFor]="actionsMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #actionsMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/tasks', 'edit', task._id]">Edit</button>
+            <button mat-menu-item (click)="delete.emit(task)" class="delete">Delete</button>
+          </mat-menu>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

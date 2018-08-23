@@ -1,0 +1,10 @@
+<app-layout>
+  <div fxLayout="row" fxLayoutAlign="end center" class="actions">
+    <button app-icon-button (click)="add()">
+      <mat-icon>add_circle_outline</mat-icon>
+      Add Task
+    </button>
+  </div>
+  <app-tasks [tasks]="tasks | async" (delete)="delete($event)">
+  </app-tasks>
+</app-layout>

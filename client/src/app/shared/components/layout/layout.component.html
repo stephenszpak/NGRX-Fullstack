@@ -1,0 +1,31 @@
+<mat-drawer-container (backdropClick)="sidenav.close()" fullscreen>
+  <mat-drawer #sidenav (keydown.escape)="close('escape')" disableClose [mode]="isMobile ? 'over' : 'side'" [opened]="opened | async">
+    <mat-list>
+      <mat-list-item>
+        <button mat-button routerLink="/index" routerLinkActive="active">Dashboard</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/tasks" routerLinkActive="active">Tasks</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button (click)="logout()">Logout</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <mat-icon (click)="sidenav.open()">menu</mat-icon>
+      <span>NGRX Fullstack playground</span>
+    </mat-toolbar>
+    <div fxLayout="row" fxLayoutAlign="center stretch">
+      <div fxFlex.xs="90%" fxFlex.sm="80%" fxFlex.md="70%" fxFlex.lg="65%" fxFlex.xl="60%">
+        <ng-content *ngIf="!(loading | async); else spinner"></ng-content>
+        <ng-template #spinner>
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <mat-spinner></mat-spinner>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,16 @@
+<app-dialog-header (close)="close()">
+  <h3>Add Task</h3>
+</app-dialog-header>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="save()">Save</button>
+</mat-dialog-actions>

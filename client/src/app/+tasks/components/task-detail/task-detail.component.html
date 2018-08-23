@@ -1,0 +1,13 @@
+<div *ngIf="task">
+  <div fxLayout="row" fxLayoutAlign="end center" class="actions">
+    <button app-icon-button [routerLink]="['/tasks', 'edit', task._id]">Edit</button>
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title><h3>{{task.name}}</h3></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    <p>{{task.description}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
